@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="content-title">Blogs</h1>
+<div class="card-deck">
+    {% for row in data %}
+    <div class="card"">
+        <div class="row no-gutters">
+            <img class="'card-img-top card-thumbnail" src="{{row[4]}}" alt="Card image cap"}/>
+            <div class="card-body">
+            <h5 class="card-title">{{row[1]}}</h5>
+            <p class="card-text">{{row[2]}}</p>
+            <a href="{{ url_for('blog',id=row[0]) }}" class="btn btn-primary card-button">Read</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

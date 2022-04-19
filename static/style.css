@@ -1,0 +1,38 @@
+.navbar {
+  background-color: #75c473;
+  padding: 10px;
+  color: white;
+  border-bottom-style: ridge;
+}
+
+.content-title{
+  text-align: center;
+  padding-top: 2%;
+}
+
+.content-paragraph{
+  text-align: justify;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 20px;
+}
+
+.card-deck{
+  padding-left: 10%;
+  vertical-align: center;
+}
+
+.card{
+  background-color: #75c473;
+  margin: 2%;
+  max-width: 30%;
+}
+
+.card-button{
+  background-color: white;
+  color: black;
+}
+
+.card-thumbnail{
+  width: 100%
+}
