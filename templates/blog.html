@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1 class="content-title">{{data[0][1]}}</h1>
+    <h1 class="content-title">{{data['title']}}</h1>
     <body>
         <div class="content-paragraph">
-            {{ data[0][3]|markdown }}
+            {{ data['post_text']|markdown }}
         </div>
     </body>
 

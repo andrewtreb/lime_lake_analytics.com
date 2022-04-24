@@ -1,28 +1,8 @@
 from database import database
+from bson.objectid import ObjectId
 
 db = database()
 
-post = '''
-<img src="https://drive.google.com/uc?export=view&id=1sjx6NJgKZ-40-IwONxITp7pdiVC15dwU" width = 80%/>
+data = db.get_post(ObjectId("625f6c193188f273a771e86e"))
 
-### Testing Markdown in Blog
-&emsp;Testing markdown in website. Testing it in a new line when it goes long enough.
-Continuing to write to make it look good.
-
-'''
-
-db.create_post("Markdown Test","Andrew Trzebiatowski",post, \
-    "https://drive.google.com/uc?export=view&id=1sjx6NJgKZ-40-IwONxITp7pdiVC15dwU")
-
-
-
-# db.cursor.execute(" \
-# CREATE TABLE IF NOT EXISTS blog_posts ( \
-#     postid int NOT NULL AUTO_INCREMENT PRIMARY KEY, \
-#     title varchar(255), \
-#     author varchar(255), \
-#     post_text text, \
-#     thumbnail text, \
-#     posted_time timestamp DEFAULT CURRENT_TIMESTAMP \
-# ) \
-# ")
+print(data['post_text'])

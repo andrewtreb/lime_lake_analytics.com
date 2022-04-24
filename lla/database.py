@@ -1,31 +1,25 @@
-import mysql.connector
+import pymongo
+from bson.objectid import ObjectId
+import os
 
 class database:
     def __init__(self):
-        self.mydb = mysql.connector.connect(
-            host="localhost",
-            user="andyt",
-            password="@mHerst73",
-            database="lime_lake_analytics"
-        )
+        mongoKey = os.getenv('MONGOKEY')
+        mongoString = 'mongodb+srv://website_service:{}' \
+            '@limelakeanalytics.eclfe.mongodb.net/' \
+            'myFirstDatabase?retryWrites=true&w=majority' \
+            .format(mongoKey)
+        print(mongoString)
+        self.client = pymongo.MongoClient(mongoString)
 
-        self.cursor = self.mydb.cursor()
+        self.db = self.client.limeLakeAnalytics
+        self.posts = self.db.posts
+
 
     def get_posts(self):
-        self.cursor.execute("SELECT postid,title,author,post_text,thumbnail FROM blog_posts")
-        return self.cursor.fetchall()
-    
-    def get_post(self, id):
-        query = "SELECT postid,title,author,post_text FROM blog_posts WHERE postid = {}".format(id)
-        self.cursor.execute(query)
-        return self.cursor.fetchall()
+        return self.posts.find()
 
-    def create_post(self, title, author, post_text, thumbnail):
-        baseSql = "INSERT INTO blog_posts(title, author, post_text, thumbnail) \
-            VALUES (%s,%s,%s,%s)"
-        vals = (title,author,post_text,thumbnail)
-        
-        self.cursor.execute(baseSql,vals)
-        self.mydb.commit()
+    def get_post(self, id):
+        return self.posts.find_one({"_id": ObjectId(id)})
 
 

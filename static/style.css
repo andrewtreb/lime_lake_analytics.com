@@ -18,7 +18,8 @@
 }
 
 .card-deck{
-  padding-left: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
   vertical-align: center;
 }
 
@@ -26,6 +27,7 @@
   background-color: #75c473;
   margin: 2%;
   max-width: 30%;
+  min-width: 30%;
 }
 
 .card-button{
