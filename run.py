@@ -22,5 +22,12 @@ def blogs():
 def blog(id):
     return render_template('blog.html', data=db.get_post(id))
 
+@app.route('/project/weatherData')
+def weatherData():
+    return render_template('weatherData.html', data=db.get_lastHourWeatherData())
+
+def temp():
+    df = db.get_allWeatherData()
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5000,debug=True,threaded=False)
