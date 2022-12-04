@@ -32,6 +32,8 @@ class database:
         cursor = self.weatherData.find()
         df = pd.DataFrame(list(cursor))
 
+        #print(df.shape)
+
         return df
 
 

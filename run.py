@@ -1,7 +1,11 @@
 from flask import Flask, render_template, url_for
 from flaskext.markdown import Markdown
 from lla.database import database
+from lla.weatherData import visuals
 from datetime import datetime
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
 app = Flask(__name__)
 Markdown(app)
 db = database()
@@ -24,10 +28,11 @@ def blog(id):
 
 @app.route('/project/weatherData')
 def weatherData():
-    return render_template('weatherData.html', data=db.get_lastHourWeatherData())
+    viz = visuals()
+    graphJson = viz.current_temp_ind()
+    last_hour = viz.data_last_hour()
 
-def temp():
-    df = db.get_allWeatherData()
+    return render_template('weatherData.html', graphJSON=graphJson, last_hour=last_hour)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5000,debug=True,threaded=False)
