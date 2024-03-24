@@ -1,5 +1,5 @@
 # start by pulling the python image
-FROM python:3.8-slim-buster
+FROM python:3.12-slim-bullseye
 
 # copy the requirements file into the image
 COPY ./requirements.txt /app/requirements.txt
