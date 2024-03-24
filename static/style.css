@@ -42,3 +42,12 @@
 .border-bottom{
   height: 20%;
 }
+
+iframe{      
+  display: block;  /* iframes are inline by default */   
+  height: 99vh;  /* Set height to 99% of the viewport height */   
+  width: 99vw;  /* Set width to 99% of the viewport width */     
+  border: none; /* Remove default border */
+  background: lightyellow; /* Just for styling */
+  margin-top: -1px;
+}
