@@ -38,13 +38,8 @@ def weatherData():
 
 @app.route('/weatherDataTest')
 def weatherDataTest():
-    src = spin_up_streamlit()
+    src = "http://localhost:5000"
     return render_template('iframe.html',src = src)
-
-
-def spin_up_streamlit():
-    subprocess.Popen(['streamlit','run','https://limelakeanalytics.com/lla/weatherAnalytics.py','--server.port','5678','--server.headless','true'])
-    return "http://localhost:5678"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5000,debug=True,threaded=False)
