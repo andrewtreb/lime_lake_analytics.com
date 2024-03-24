@@ -43,8 +43,21 @@ def weatherDataTest():
 
 
 def spin_up_streamlit():
-    subprocess.Popen(['streamlit','run','.\lla\weatherAnalytics.py','--server.port','5678','--server.headless','true'])
-    return "http://localhost:5678"
+    output = subprocess.Popen(['streamlit','run','.\lla\weatherAnalytics.py','--server.port','5678','--server.headless','true'], stdout=subprocess.PIPE, universal_newlines=True)
+
+    i=0
+    for y in iter(output.stdout.readline,""):
+        i+=1
+        print(y)
+        if "External URL:" in y:
+            externalURL=y
+            break
+        if i > 20:
+            break
+    
+    externalURL = externalURL.replace("External URL:","").replace(" ","")
+
+    return externalURL
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5000,debug=True,threaded=False)
