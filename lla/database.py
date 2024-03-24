@@ -11,7 +11,6 @@ class database:
             '@limelakeanalytics.eclfe.mongodb.net/' \
             'myFirstDatabase?retryWrites=true&w=majority' \
             .format(mongoKey)
-        print(mongoString)
         self.client = pymongo.MongoClient(mongoString)
 
         self.db = self.client.limeLakeAnalytics
