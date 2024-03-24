@@ -43,7 +43,7 @@ def weatherDataTest():
 
 
 def spin_up_streamlit():
-    subprocess.Popen(['streamlit','run','.https://limelakeanalytics.com/lla/weatherAnalytics.py','--server.port','5678','--server.headless','true'])
+    subprocess.Popen(['streamlit','run','https://limelakeanalytics.com/lla/weatherAnalytics.py','--server.port','5678','--server.headless','true'])
     return "http://localhost:5678"
 
 if __name__ == "__main__":
