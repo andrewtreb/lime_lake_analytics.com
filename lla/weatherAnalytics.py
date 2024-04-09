@@ -29,7 +29,7 @@ def set_style():
 def sidebar(weatherData):
     latest_data_time = weatherData['data_time'].max()
     st.sidebar.write("Latest timestamp: {}".format(latest_data_time))
-    n_days = st.sidebar.slider("Past N days",0,30)
+    n_days = st.sidebar.slider("Past N days",1,30)
     return n_days
 
 #Pagebody which today triggers the building of the top level metric cards

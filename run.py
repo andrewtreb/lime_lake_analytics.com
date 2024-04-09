@@ -30,16 +30,9 @@ def blog(id):
 
 @app.route('/project/weatherData')
 def weatherData():
-    viz = visuals()
-    graphJson = viz.current_temp_ind()
-    last_hour = viz.data_last_hour()
-
-    return render_template('weatherData.html', graphJSON=graphJson, last_hour=last_hour)
-
-@app.route('/weatherDataTest')
-def weatherDataTest():
     src = "https://streamlit.limelakeanalytics.com/"
     return render_template('iframe.html',src = src)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=5000,debug=True,threaded=False)
